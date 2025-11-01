@@ -27,6 +27,8 @@ wheels/
 # PyInstaller
 *.manifest
 *.spec
+build/
+dist/
 
 # IDEs
 .vscode/
@@ -43,3 +45,4 @@ desktop.ini
 # Project specific
 *.ico.bak
 test_*.png
+release/

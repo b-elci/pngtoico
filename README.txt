@@ -2,6 +2,8 @@
 PNG to ICO Converter v1.0.0
 =====================================
 
+☕ Support this project: https://buymeacoffee.com/bariselcii
+
 Developer: Barış Elçi
 Email: bariselci@gmail.com
 GitHub: https://github.com/b-elci/pngtoico

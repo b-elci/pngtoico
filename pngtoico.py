@@ -125,6 +125,10 @@ class PngToIcoConverter(ThemedTk):
         self.browser_button = ttk.Button(self, text="Find Icons (Flaticon)", command=self.open_browser)
         self.browser_button.grid(row=7, column=0, columnspan=2, pady=5, sticky="ew")
 
+        # Buy Me a Coffee Button
+        self.coffee_button = ttk.Button(self, text="☕ Buy Me a Coffee", command=self.open_coffee_link, style='Accent.TButton')
+        self.coffee_button.grid(row=8, column=0, columnspan=2, pady=5, sticky="ew")
+
         # Auto-Delete Option
         self.auto_delete_var = tk.BooleanVar(value=True)
         self.auto_delete_check = ttk.Checkbutton(
@@ -133,12 +137,12 @@ class PngToIcoConverter(ThemedTk):
             variable=self.auto_delete_var,
             style='TCheckbutton' # Apply style if needed
         )
-        self.auto_delete_check.grid(row=8, column=0, columnspan=2, pady=(10, 0), sticky="w")
+        self.auto_delete_check.grid(row=9, column=0, columnspan=2, pady=(10, 0), sticky="w")
 
         # Status Bar
         self.status_var = tk.StringVar(value="Ready.")
         status_bar = ttk.Label(self, textvariable=self.status_var, relief=tk.SUNKEN, anchor=tk.W, style='Status.TLabel')
-        status_bar.grid(row=9, column=0, columnspan=2, pady=(15, 0), sticky="ew")
+        status_bar.grid(row=10, column=0, columnspan=2, pady=(15, 0), sticky="ew")
 
         # --- Start Download Monitoring ---
         # Check if downloads folder exists before starting thread
@@ -351,6 +355,17 @@ class PngToIcoConverter(ThemedTk):
             webbrowser.open("https://www.flaticon.com/")
             # Don't reset status immediately, let user see it opened
             # self.after(1500, self.update_status, "Ready.") # Optional delayed reset
+        except Exception as e:
+            error_msg = f"Could not open the web browser:\n{e}"
+            self.update_status(f"Error opening browser: {e}")
+            print(error_msg)
+            messagebox.showerror("Browser Error", error_msg)
+
+    def open_coffee_link(self):
+        """Opens Buy Me a Coffee page in the default web browser."""
+        self.update_status("Opening Buy Me a Coffee...")
+        try:
+            webbrowser.open("https://buymeacoffee.com/bariselcii")
         except Exception as e:
             error_msg = f"Could not open the web browser:\n{e}"
             self.update_status(f"Error opening browser: {e}")
